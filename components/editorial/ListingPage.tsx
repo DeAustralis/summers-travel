@@ -1,0 +1,2 @@
+import { articles } from "@/data/content"; import { ArticleCard } from "./ArticleCard";
+export function ListingPage({title,kicker,description,filter}:{title:string;kicker:string;description:string;filter?:(a:typeof articles[number])=>boolean}){const items=filter?articles.filter(filter):articles;return <><header className="pageHero"><span className="eyebrow">{kicker}</span><h1>{title}</h1><p>{description}</p></header><section className="contentGrid"><div className="articleGrid">{items.map(a=><ArticleCard key={a.id} article={a}/>)}</div></section></>}

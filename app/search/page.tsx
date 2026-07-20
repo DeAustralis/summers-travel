@@ -1,0 +1,1 @@
+import {SearchClient} from "@/components/SearchClient";export default function Page(){return <><header className="pageHero"><span className="eyebrow">The archive</span><h1>Search</h1><p>Find a journey by destination, region, category or theme.</p></header><section className="contentGrid"><SearchClient/></section></>}

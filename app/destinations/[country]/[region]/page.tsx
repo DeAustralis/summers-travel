@@ -1,0 +1,2 @@
+import { ListingPage } from "@/components/editorial/ListingPage";
+export default async function Page({params}:{params:Promise<{country:string;region:string}>}){const {country,region}=await params;const name=region.split("-").map(x=>x[0].toUpperCase()+x.slice(1)).join(" ");return <ListingPage kicker={country} title={name} description={`A considered guide to ${name}: where to stay, what to eat and the roads that reveal the region.`} filter={a=>a.region?.toLowerCase()===region||a.destination.toLowerCase().replaceAll(" ","-")===region}/>}

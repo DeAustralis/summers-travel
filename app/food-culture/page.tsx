@@ -1,0 +1,1 @@
+import { ListingPage } from "@/components/editorial/ListingPage"; export default function Page(){return <ListingPage kicker="At the table" title="Food & Culture" description="Markets, makers, neighbourhood tables and the traditions that shape a place." filter={a=>["Culture","Accommodation"].includes(a.category)}/>}

@@ -1,0 +1,2 @@
+import Image from "next/image";import Link from "next/link";import type { Destination } from "@/types/content";
+export function DestinationCard({destination}:{destination:Destination}){return <Link className="destinationCard" href={`/destinations/${destination.slug}`}><Image src={destination.heroImage} alt={destination.name} fill sizes="(max-width: 700px) 85vw, 33vw"/><div><span>12 guides</span><h3>{destination.name}</h3><p>{destination.description}</p></div></Link>}

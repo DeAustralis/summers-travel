@@ -1,0 +1,1 @@
+import { ListingPage } from "@/components/editorial/ListingPage"; export default function Page(){return <ListingPage kicker="Across the water" title="Islands" description="Greek and Italian islands for slow summers and longer stays." filter={a=>a.category==="Islands"}/>}

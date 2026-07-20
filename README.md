@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Summers Travel
 
-## Getting Started
+Premium editorial travel magazine foundation for [summers.travel](https://summers.travel), focused on Mediterranean long stays, road trips, islands, food, culture, and accommodation.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js App Router, React, TypeScript, CSS Modules-compatible styling, `next/image`, `next/font`, Lucide icons, and an interface-based content repository ready for Supabase. Intended for Vercel.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use Node 20.19+ or Node 22+, then run `npm install` and `npm run dev`. Validation scripts are `npm run lint`, `npm run typecheck`, and `npm run build`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+No environment variables are currently required. A future Supabase integration should use `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and server-only service credentials where necessary.
 
-## Learn More
+## Content architecture
 
-To learn more about Next.js, take a look at the following resources:
+Typed mock content lives in `data/`, types in `types/`, and repository access in `lib/content.ts`. Articles connect to destinations, countries, regions, categories, tags, authors, related articles, and related destinations. Components place contextual planning links inside article content as well as related blocks after it.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Images are served through `next/image`; remote editorial placeholders currently use Unsplash. Replace them with licensed originals or a Supabase Storage/Vercel image workflow before launch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployment is designed for Vercel but has not been performed. The newsletter form has a local success state and is ready to connect to Supabase, Resend, or Mailgun.
 
-## Deploy on Vercel
+## Recommended next steps
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Connect Supabase.
+2. Select the publishing workflow or CMS.
+3. Add a newsletter provider.
+4. Add privacy-conscious analytics.
+5. Connect Google Search Console.
+6. Publish deeper destination pillar pages.
+7. Build automated internal-linking rules.
+8. Add affiliate tracking and disclosure controls.
+9. Add owned image storage and rights metadata.
+10. Expand editorial author profiles.

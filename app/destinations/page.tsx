@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import { destinations } from "@/data/content"; import { DestinationCard } from "@/components/editorial/DestinationCard";
+export const metadata:Metadata={title:"Mediterranean Destinations",description:"Slow travel guides to Greece, Italy and the Mediterranean.",alternates:{canonical:"/destinations"}};
+export default function Page(){return <><header className="pageHero"><span className="eyebrow">Find your place</span><h1>Destinations</h1><p>Island harbours, storied cities and country roads worth taking slowly.</p></header><section className="contentGrid"><div className="destinationGrid">{destinations.map(d=><DestinationCard key={d.id} destination={d}/>)}</div></section></>}

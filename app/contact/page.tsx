@@ -1,0 +1,1 @@
+export default function Page(){return <section className="pageHero"><span className="eyebrow">Say hello</span><h1>Contact</h1><p>Story idea, correction or a quiet place we should know about? Write to <a href="mailto:hello@summers.travel">hello@summers.travel</a>.</p></section>}

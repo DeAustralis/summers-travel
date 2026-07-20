@@ -1,0 +1,1 @@
+import { ListingPage } from "@/components/editorial/ListingPage"; export default function Page(){return <ListingPage kicker="Take the long way" title="Road Trips" description="Curated Mediterranean drives with time for detours, market lunches and swims." filter={a=>a.category==="Road Trips"}/>}

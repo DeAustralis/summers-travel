@@ -1,0 +1,1 @@
+import { ListingPage } from "@/components/editorial/ListingPage"; export default function Page(){return <ListingPage kicker="Live like you mean it" title="Long Stays" description="Practical guides to spending several weeks or months in the Mediterranean." filter={a=>a.category==="Long Stays"}/>}

@@ -1,0 +1,4 @@
+export type Author = { id:string; slug:string; name:string; bio:string; avatar:string; credentials:string; social:{label:string;url:string}[] };
+export type Destination = { id:string; slug:string; name:string; type:"country"|"region"|"island"|"city"; country:string; region?:string; description:string; heroImage:string; featured:boolean; articleIds:string[]; parentDestinationId?:string };
+export type Article = { id:string; slug:string; title:string; excerpt:string; standfirst:string; content:string[]; heroImage:string; category:string; tags:string[]; destination:string; country:string; region?:string; city?:string; island?:string; author:string; publishedAt:string; updatedAt:string; readingTime:number; featured:boolean; relatedArticleIds:string[]; relatedDestinationIds:string[]; seoTitle:string; seoDescription:string; canonicalUrl:string; noindex:boolean };
+export type RoadTrip = { title:string; place:string; duration:string; image:string };
