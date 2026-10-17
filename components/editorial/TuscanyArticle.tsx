@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Article } from "@/types/content";
 import { tuscany } from "@/data/tuscany";
+import { tuscanyPhotography } from "@/data/tuscany-photography";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import s from "./TuscanyArticle.module.css";
@@ -12,6 +13,17 @@ const stops = [
   { title: "Pienza", nights: "Nights 5–6", days: "Days 5 & 6", note: "San Quirico, Bagno Vignoni & Monticchiello", href: "#day-5" },
   { title: "Montepulciano", nights: "The finish", days: "Day 7", note: "A final walk along the ridge", href: "#day-7" },
 ];
+
+function ItineraryPhotograph({ day }: { day: number }) {
+  const photo = tuscanyPhotography[day];
+  if (!photo) return null;
+  return <figure className={s.supportingPhoto}>
+    <Image src={photo.src} width={photo.width} height={photo.height} alt={photo.alt}
+      sizes="(max-width: 540px) calc(100vw - 48px), (max-width: 800px) calc(100vw - 48px), 770px"
+      loading="lazy"/>
+    <figcaption><span>{photo.caption}</span><span>{photo.credit} / {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : photo.license} (via <a href={photo.source}>Wikimedia Commons</a>) · resized &amp; converted to WebP</span></figcaption>
+  </figure>;
+}
 
 export function TuscanyArticle({ article: a }: { article: Article }) {
   return <div className={s.story}>
@@ -36,7 +48,7 @@ export function TuscanyArticle({ article: a }: { article: Article }) {
         <div id="introduction" className={s.intro}>{tuscany.intro.map(p=><p key={p}>{p}</p>)}</div>
         {tuscany.days.map((day,i)=><section id={`day-${i+1}`} key={day.title} className={s.day}>
           <div className={s.dayTop}><span className={s.dayNumber}>0{i+1}</span><span className={s.label}>Day {i+1}<span className={s.places}>{day.places}</span></span></div>
-          <h2>{day.title}</h2>{day.paragraphs.map(p=><p key={p}>{p}</p>)}<p className={s.base}><span aria-hidden="true">↳</span> {day.base}</p>
+          <h2>{day.title}</h2>{day.paragraphs.map((p,index)=><div key={p}><p>{p}</p>{index===0 ? <ItineraryPhotograph day={i+1}/> : null}</div>)}<p className={s.base}><span aria-hidden="true">↳</span> {day.base}</p>
         </section>)}
         <section id="practical" className={s.practical}><span className={s.label}>Before you go</span><h2>{tuscany.practicalTitle}</h2>{tuscany.practical.map(p=><p key={p}>{p}</p>)}</section>
         <section id="references" className={s.references}><span className={s.label}>Sources & planning</span><h2>Keep the details current</h2><p>This proposed itinerary draws on Visit Tuscany and UNESCO references checked on 17 October 2026. Check current opening hours, access, road conditions and appointments before travelling. “Quieter roads” describes the aim of the journey; traffic varies.</p><ul>
