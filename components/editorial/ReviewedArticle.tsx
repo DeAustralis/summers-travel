@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArticleSources } from "./ArticleSources";
 import styles from "./ReviewedArticle.module.css";
 
 type Photo = {
@@ -48,7 +49,7 @@ export function ReviewedArticle({ edition }: { edition: Edition }) {
           <ol>{draft.sections.map((section, index) => (
             <li key={section.heading}><a href={`#section-${index + 1}`}>{section.heading}</a></li>
           ))}</ol>
-          <a href="#sources">Sources &amp; further reading</a>
+          <a href="#sources" className={styles.sourcesLink}>Sources</a>
         </nav>
         <div className={styles.body}>
           {draft.sections.map((section, index) => (
@@ -65,12 +66,7 @@ export function ReviewedArticle({ edition }: { edition: Edition }) {
               {images.filter((image) => image.placement === section.heading).map((photo) => <Photograph key={photo.src} photo={photo} />)}
             </section>
           ))}
-          <section id="sources" className={styles.references} aria-labelledby="sources-title">
-            <p className={styles.kicker}>The reading behind the route</p>
-            <h2 id="sources-title">Sources &amp; further reading</h2>
-            <p>Sources support the linked sections. Check the current local arrangements before travelling.</p>
-            <ol>{sources.map((source) => <li key={source.id} id={`source-${source.id}`}><a href={source.url}>{source.title}</a><span>Accessed {source.accessedAt}</span></li>)}</ol>
-          </section>
+          <ArticleSources sources={sources} />
           <footer className={styles.endnote}>End of staging review edition · Human approval pending</footer>
         </div>
       </div>

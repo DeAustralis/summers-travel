@@ -44,3 +44,20 @@ Remote preview protection, deployment commit and actual page/assets must be
 verified after the authorized feature push. No production merge or release is
 part of that verification. Rollback is abandoning the preview branch/deployment;
 existing production content and domains remain untouched.
+
+## Sources prominence correction — 19 October
+
+David's supplied screenshot was materialized from Library and inspected before
+editing. The bibliography is now a native, closed-by-default details disclosure:
+small12px muted summary, compact unnumbered references and inline access dates.
+The TOC uses a restrained Sources link. All15 source URLs/metadata, original prose
+and image bytes are unchanged. A small client island reveals and focuses the
+correct endnote for ordinary/keyboard citation activation, direct fragment loads
+and history hash changes; native summary keyboard operation remains intact.
+
+Focused Chrome desktop1440×1100/mobile390×844 tests passed collapsed/expanded
+states, Enter/Space toggles, all15 citation targets, keyboard source navigation,
+source URLs/access dates, direct hash reveal, TOC disclosure focus, no overflow
+and zero browser errors. Default disclosure height is below70px. Exact reviewed
+input/image verification, ESLint, TypeScript and one Next build passed. No new
+dependency, production/access setting or article approval was introduced.
