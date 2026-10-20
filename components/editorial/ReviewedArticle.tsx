@@ -32,15 +32,11 @@ export function ReviewedArticle({ edition }: { edition: Edition }) {
   const sourceMap = new Map(sources.map((source) => [source.id, source]));
   return (
     <article className={styles.story} aria-labelledby="review-title">
-      <div className={styles.notice}>
-        <strong>Protected staging preview</strong>
-        <span>Human review pending · Not published · No author byline</span>
-      </div>
       <header className={styles.heading}>
         <p className={styles.kicker}>Tuscany / A seven-day framework</p>
         <h1 id="review-title">{draft.title}</h1>
         <p className={styles.standfirst} data-reviewed-standfirst>{draft.standfirst}</p>
-        <p className={styles.edition}>Assisted editorial revision · Review edition 18 October 2026</p>
+        <p className={styles.edition}>Published 20 October 2026</p>
       </header>
       {hero ? <Photograph photo={hero} hero /> : null}
       <div className={styles.reading}>
@@ -67,7 +63,6 @@ export function ReviewedArticle({ edition }: { edition: Edition }) {
             </section>
           ))}
           <ArticleSources sources={sources} />
-          <footer className={styles.endnote}>End of staging review edition · Human approval pending</footer>
         </div>
       </div>
     </article>

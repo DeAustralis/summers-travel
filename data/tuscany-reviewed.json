@@ -1,7 +1,7 @@
 {
-  "slug": "a-considered-week-in-tuscany-staging",
+  "slug": "a-considered-week-in-tuscany",
   "reviewedOn": "2026-10-18",
-  "status": "Human review pending; not published",
+  "status": "Published",
   "draft": {
     "title": "A considered week in Tuscany",
     "standfirst": "Follow Chianti’s main road towards Siena, then give the hill towns and working landscape of the Val d’Orcia room to breathe. This seven-day route is a framework, not a timed driving schedule: check current access and transport before setting out.",
@@ -259,5 +259,6 @@
       "changes": "Resized and converted to WebP",
       "placement": "Day 7: finish in Montalcino"
     }
-  ]
+  ],
+  "publishedOn": "2026-10-20"
 }

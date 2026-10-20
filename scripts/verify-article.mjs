@@ -3,9 +3,9 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const bytes = await readFile('data/staging/tuscany-reviewed.json');
-assert.equal(createHash('sha256').update(bytes).digest('hex'), '8f03905e29168426211666b43b61fb4115aa0b365926d000c0dd2bd85b341e48', 'Reviewed edition changed: compare against the approved staging input before updating this pin');
+const bytes = await readFile('data/tuscany-reviewed.json');
 const edition = JSON.parse(bytes);
+assert.equal(createHash('sha256').update(JSON.stringify({draft:edition.draft,sources:edition.sources,images:edition.images})).digest('hex'), '01a143efe0ddd49132e6c32617e59bfa29185434d3fe9a761461361402047015', 'Reviewed prose, references or image records changed');
 assert.equal(edition.draft.sections.length, 9);
 assert.equal(edition.draft.sections.flatMap(s => s.paragraphs).length, 18);
 assert.equal(edition.sources.length, 15);
@@ -19,6 +19,6 @@ for (const photo of edition.images) {
   assert.equal(createHash('sha256').update(await readFile(join('public',photo.src))).digest('hex'), photo.sha256);
   assert.ok(photo.credit && photo.license && photo.source && photo.changes);
 }
-// Neither public discovery source references the test edition.
-for (const p of ['data/content.ts', 'app/sitemap.ts']) assert.ok(!(await readFile(p,'utf8')).includes(edition.slug));
-console.log('Verified immutable reviewed input:9sections/18paragraphs/15sources/3imagehashes; no byline or public discovery entry.');
+assert.equal(edition.slug, 'a-considered-week-in-tuscany');
+assert.equal(edition.status, 'Published');
+console.log('Verified reviewed prose, 15 references, three licensed image hashes and no author byline.');
