@@ -1,3 +1,4 @@
+import reviewedEdition from "./tuscany-reviewed.json";
 import type { Article, Author, Destination, RoadTrip } from "@/types/content";
 import { tuscany } from "./tuscany";
 const img=(id:string)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=85`;
@@ -46,3 +47,17 @@ Object.assign(tuscanyArticle, {
 });
 export const roadTrips:RoadTrip[]=["Tuscany Road Trip|Italy|7 days|photo-1529260830199-42c24126f198","Puglia Coastal Drive|Italy|8 days|photo-1602002418082-a4443e081dd1","Kefalonia by Car|Greece|6 days|photo-1603565816030-6b389eeb23cb","Sicily Road Trip|Italy|10 days|photo-1523906834658-6e24ef2386f9","Peloponnese Road Trip|Greece|12 days|photo-1500530855697-b586d89ba3ee"].map(x=>{const [title,place,duration,p]=x.split("|");return{title,place,duration,image:img(p)}});
 export const islands=["Kefalonia","Ithaki","Corfu","Crete","Sicily","Sardinia"];
+
+// The reviewed edition is a separate story; retain the original Tuscany itinerary.
+articles.push({
+  id: "ar-considered-tuscany", slug: reviewedEdition.slug, title: reviewedEdition.draft.title,
+  excerpt: reviewedEdition.draft.standfirst, standfirst: reviewedEdition.draft.standfirst,
+  content: reviewedEdition.draft.sections.flatMap(section => section.paragraphs),
+  heroImage: reviewedEdition.images.find(image => image.placement === "hero")!.src,
+  category: "Road Trips", tags: ["road trips", "tuscany", "slow travel"],
+  destination: "Tuscany", country: "Italy", region: "Tuscany", author: "",
+  publishedAt: reviewedEdition.publishedOn, updatedAt: reviewedEdition.publishedOn,
+  readingTime: 8, featured: false, relatedArticleIds: ["ar1"], relatedDestinationIds: [],
+  seoTitle: reviewedEdition.draft.title, seoDescription: reviewedEdition.draft.standfirst,
+  canonicalUrl: `https://www.summers.travel/articles/${reviewedEdition.slug}`, noindex: false,
+});
